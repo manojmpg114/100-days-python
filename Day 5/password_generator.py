@@ -43,3 +43,14 @@ for i in range(len(custom_pass)):
     
 
 print(f'Here is your new password: {new_pass}')
+
+#alternatively we can also just run the random shuffle method on our custom_pass list 
+custom_pass = l_use+n_use+s_use
+random.shuffle(custom_pass)
+#print(custom_pass)
+new_pass = ''
+
+for char in custom_pass:
+    new_pass += char
+
+print(f'Here is your new password: {new_pass}')
