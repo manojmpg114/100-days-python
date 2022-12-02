@@ -26,3 +26,8 @@ print(random_float_large)
 love_score = random.randint(1,100)
 print(f'Your love score is {love_score}')
 
+def my_function():
+    print('Hello')
+    print('Bye')
+    
+my_function()
