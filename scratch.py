@@ -31,3 +31,36 @@ def my_function():
     print('Bye')
     
 my_function()
+
+#Hurdle 4 code switching devices 
+
+"""
+def turn_right():
+    turn_left()
+    turn_left()
+    turn_left()
+    
+def jump():
+    turn_left()
+    count = 0
+    while wall_on_right():
+        move()
+        count +=1
+    turn_right()
+    move()
+    turn_right()
+    for i in range(count):
+        move()
+    turn_left()
+    
+while not at_goal(): #version 2 dynamic
+    if not is_facing_north():
+        while not wall_in_front():
+            move()
+        if wall_in_front():
+            jump()
+    if at_goal():
+        break
+        
+
+"""
