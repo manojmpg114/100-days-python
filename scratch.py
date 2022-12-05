@@ -64,3 +64,26 @@ while not at_goal(): #version 2 dynamic
         
 
 """
+#Final Project: Escaping the Maze
+
+"""
+def turn_right():
+    turn_left()
+    turn_left()
+    turn_left()
+
+    
+wall_front = False
+wall_right = False
+while not at_goal():
+    wall_front = wall_in_front()
+    wall_right = wall_on_right()
+    if wall_front and wall_right:
+        turn_left()
+    elif not wall_front and wall_right:
+        move()
+    elif not wall_front and not wall_right:
+        move()
+    elif not wall_right:
+        turn_right()
+"""
