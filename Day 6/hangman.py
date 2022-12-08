@@ -18,29 +18,99 @@ The Game hangman
 
 import random
 
+stages = ['''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+''']
+
 word_list = ['dive', 'tie', 'doll', 'convenience', 'survey', 'inflation'] #random word list
 chosen_word = word_list[random.randint(0, len(word_list)-1)].lower() #randomly selected word from list
 
+attempts_left = 6
+end_game = False
 
 fill_chosen_word = '_'*len(chosen_word) #create blanks for the chosen word 
 
 print(chosen_word)
 print(fill_chosen_word) #display blanks matching chosen_word length
 
-guess = input('What letter is your guess? ').lower()
+guess_list = [] #to let the player know what guesses they already made 
 
-if guess in chosen_word:
-    counter = 0
-    for char in chosen_word:
-        if guess == char:
-            update_word = list(fill_chosen_word) #create list of the fill for editing, strings are immutable
-            update_word[counter] = char #change the string at location counter with the character
-            fill_chosen_word = ''.join(update_word) #create a new string with the updated word including any remaining blanks
-        counter +=1 #increment counter used for list location 
+while end_game == False:
+    if '_' in fill_chosen_word and attempts_left > -1:
+        guess = input('What letter is your guess? ').lower()
+
+        if guess in chosen_word:
+            counter = 0
+            for char in chosen_word:
+                if guess == char:
+                    update_word = list(fill_chosen_word) #create list of the fill for editing, strings are immutable
+                    update_word[counter] = char #change the string at location counter with the character
+                    fill_chosen_word = ''.join(update_word) #create a new string with the updated word including any remaining blanks
+                counter +=1 #increment counter used for list location 
+            strike_check = True
+        else:
+            print(stages[attempts_left])
+            attempts_left -= 1
         
-else:
-    #some code to draw the hangman, which later needs to be looped while the hangman isn't killed or the solution isn't solved
-    pass
-
-
-print(fill_chosen_word)
+        print(fill_chosen_word)
+    else:
+        if '_' not in fill_chosen_word and attempts_left > -1:
+            print('YOU WIN')
+            end_game = True
+        else:
+            print('You Lost!')
+            end_game = True
+print('FIN')
