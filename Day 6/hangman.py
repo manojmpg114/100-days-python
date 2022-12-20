@@ -17,6 +17,7 @@ The Game hangman
 #if word is not guessed and player didn't use all guesses, go back to asking for another guess and repeat the cycle 
 
 import random
+import hangman_words
 
 stages = ['''
   +---+
@@ -76,7 +77,8 @@ stages = ['''
 ''']
 
 word_list = ['dive', 'tie', 'doll', 'convenience', 'survey', 'inflation'] #random word list
-chosen_word = word_list[random.randint(0, len(word_list)-1)].lower() #randomly selected word from list
+#chosen_word = word_list[random.randint(0, len(word_list)-1)].lower() #randomly selected word from list
+chosen_word = random.choice(hangman_words.word_list)
 
 attempts_left = 6
 end_game = False
@@ -90,7 +92,10 @@ guess_list = [] #to let the player know what guesses they already made
 
 while end_game == False:
     if '_' in fill_chosen_word and attempts_left > -1:
+        
         guess = input('What letter is your guess? ').lower()
+        print(f'Guesses made: {guess_list}')
+        guess_list.append(guess)
 
         if guess in chosen_word:
             counter = 0
@@ -102,6 +107,7 @@ while end_game == False:
                 counter +=1 #increment counter used for list location 
             strike_check = True
         else:
+            print(f"You guessed {guess}, that's not in the word. you lose a life.")
             print(stages[attempts_left])
             attempts_left -= 1
         
@@ -113,4 +119,6 @@ while end_game == False:
         else:
             print('You Lost!')
             end_game = True
+    
+    
 print('FIN')
