@@ -1,89 +1,46 @@
-print('hello'[3])
+############DEBUGGING#####################
 
-num_char = len(input('what is your name? '))
-str_num_char = str(num_char)
-print(f'your name has {num_char} characters')
+# # Describe Problem
+# def my_function():
+#   for i in range(1, 21):
+#     if i == 20:
+#       print("You got it")
+# my_function()
 
-print('output:' + str_num_char)
+# # Reproduce the Bug
+# from random import randint
+# dice_imgs = ["❶", "❷", "❸", "❹", "❺", "❻"]
+# dice_num = randint(0, 5)
+# print(dice_imgs[dice_num])
 
-import random 
+# # Play Computer
+# year = int(input("What's your year of birth?"))
+# if year > 1980 and year < 1994:
+#   print("You are a millenial.")
+# elif year >= 1994:
+#   print("You are a Gen Z.")
 
-random_integer = random.randint(1,10)
+# # Fix the Errors
+# age = input("How old are you?")
+# if age > 18:
+#     print(f"You can drive at age {age}.")
 
-print(random_integer)
+# #Print is Your Friend
+# pages = 0
+# word_per_page = 0
+# pages = int(input("Number of pages: "))
+# #print(pages)
+# word_per_page = int(input("Number of words per page: "))
+# #print(word_per_page)
+# total_words = pages * word_per_page
+# print(total_words)
 
-#import custom module for use in main programming area 
-import my_module
+# #Use a Debugger
+# def mutate(a_list):
+#   b_list = []
+#   for item in a_list:
+#     new_item = item * 2
+#     b_list.append(new_item)
+#   print(b_list)
 
-print(my_module.pi) #from other module 
-
-random_float = random.random() 
-print(random_float)
-
-random_float_large = random_float * 5 #expands range to 0-5
-print(random_float_large)
-
-love_score = random.randint(1,100)
-print(f'Your love score is {love_score}')
-
-def my_function():
-    print('Hello')
-    print('Bye')
-    
-my_function()
-
-#Hurdle 4 code switching devices 
-
-"""
-def turn_right():
-    turn_left()
-    turn_left()
-    turn_left()
-    
-def jump():
-    turn_left()
-    count = 0
-    while wall_on_right():
-        move()
-        count +=1
-    turn_right()
-    move()
-    turn_right()
-    for i in range(count):
-        move()
-    turn_left()
-    
-while not at_goal(): #version 2 dynamic
-    if not is_facing_north():
-        while not wall_in_front():
-            move()
-        if wall_in_front():
-            jump()
-    if at_goal():
-        break
-        
-
-"""
-#Final Project: Escaping the Maze
-
-"""
-def turn_right():
-    turn_left()
-    turn_left()
-    turn_left()
-
-    
-wall_front = False
-wall_right = False
-while not at_goal():
-    wall_front = wall_in_front()
-    wall_right = wall_on_right()
-    if wall_front and wall_right:
-        turn_left()
-    elif not wall_front and wall_right:
-        move()
-    elif not wall_front and not wall_right:
-        move()
-    elif not wall_right:
-        turn_right()
-"""
+# mutate([1,2,3,5,8,13])
