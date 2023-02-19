@@ -85,6 +85,30 @@ def check_resources(order):
     
     return True
 
+def manage_order(order, money_dict):
+    """Check if the money provided is enough to pay for the selected item, if so check if its more and offer change"""
+    total_offered = 0
+    cost = MENU[order]['cost']
+
+    for coin in money_dict:
+        if coin == 'quarter':
+            total_offered += money_dict[coin]*0.25
+        elif coin == 'dime':
+            total_offered += money_dict[coin]*0.1
+        elif coin == 'nickel':
+            total_offered += money_dict[coin]*0.05
+        elif coin == 'penny':
+            total_offered += money_dict[coin]*0.01
+    
+    if total_offered > cost:
+        print(f'Money Accepted, offering ${total_offered-cost} in change')
+        return cost #change this to adding money to resources + subtracting resources to make the order
+    elif total_offered == cost:
+        print(f'Vending {order}')
+        return cost #change this to adding money to resources + subtracting resources to make the order
+    else:
+        print('Not enough money, returning money')
+        return 0 #can remove this return once we change how the method processes
 
 def run():
     """Take the order and check if it is possible, if so collect the money and serve the order, runs the machine and reports"""
@@ -96,6 +120,7 @@ def run():
         run_report(order)
     if check_resources(order):
         print('We have enough') #Time to put code / logic / methods relataed to accepting money and dishing out the order
+        resources["money"] = manage_order(order,{'quarter' : 1, 'dime': 2, 'nickel': 3, 'penny': 4})
     
 
 
