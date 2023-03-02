@@ -31,21 +31,6 @@ resources = {
     "money" : 0
 }
 
-#order = input("What would you like?: ") #Need to loop this for as long as the machine is running
-#need a case were order = 'off' to exit the code all together, sys.exit
-#when order = 'report' print the current resources report with accurate levels 
-
-#if resources not enough for order, print "Sorry there is not enough water/milk/coffee"
-
-#process coins should be it's own method 
-#if there is enough resources for the order, the program should ask to enter how many of each coins
-#[quarter, dime, nickel, penny]
-#calculate the payment -- if not enough print "Sorry that's not enough money. Money refunded."
-
-#if payment is enough, check if any change is due and then offer change: "Here is $2.45 dollars in change. <- round to 2 decimal points"
-#change resource values to dispense the order
-
-#after resources are modified and money accounted for, print "Here is your latte/expresso/cappucino. Enjoy!"
 def run_report(order):
     """Run the report of resources, returns nothing"""
     if order == 'report':
@@ -101,14 +86,22 @@ def manage_order(order, money_dict):
             total_offered += money_dict[coin]*0.01
     
     if total_offered > cost:
-        print(f'Money Accepted, offering ${total_offered-cost} in change')
-        return cost #change this to adding money to resources + subtracting resources to make the order
+        print(f'Money Accepted, offering ${total_offered-cost:.2f} in change') #if this was more legitimate round based on currency and account for full values to the penny
+        
+        resources["money"] += cost
+        
+        for resource in MENU[order]["ingredients"]:
+            resources[resource] -= MENU[order]["ingredients"][resource]
+            
+        print(f'Vending {order}')
+        return resources["money"]
     elif total_offered == cost:
         print(f'Vending {order}')
-        return cost #change this to adding money to resources + subtracting resources to make the order
+        resources["money"] += cost
+        return resources["money"] 
     else:
         print('Not enough money, returning money')
-        return 0 #can remove this return once we change how the method processes
+        return resources["money"]
 
 def run():
     """Take the order and check if it is possible, if so collect the money and serve the order, runs the machine and reports"""
@@ -118,10 +111,22 @@ def run():
         return False #plug into a while loop to terminate
     if order == 'report':
         run_report(order)
-    if check_resources(order):
-        print('We have enough') #Time to put code / logic / methods relataed to accepting money and dishing out the order
-        resources["money"] = manage_order(order,{'quarter' : 1, 'dime': 2, 'nickel': 3, 'penny': 4})
+        
+    if order != 'off' and order != 'report':
+        if check_resources(order):
+            
+            print('We have enough')
+            resources["money"] = manage_order(order,{
+                'quarter' : int(input('Enter number of quarters: ')),
+                'dime': int(input('Enter number of dimes: ')),
+                'nickel': int(input('Enter number of nickles: ')),
+                'penny': int(input('Enter number of pennies: ')),
+                }) #change money input to user's choice later
+    
     
 
+#Running here didn't want to make a main
 
-run()
+while True:
+    if run() == False:
+        break
