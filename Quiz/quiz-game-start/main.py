@@ -17,3 +17,5 @@ quiz.next_question()
 
 while quiz.still_has_questions():    #if quiz still has questions
     quiz.next_question()
+
+print(f'Final score: {quiz.score}/{len(question_bank)}')
