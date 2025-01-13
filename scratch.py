@@ -1,4 +1,13 @@
 ############DEBUGGING#####################
+with open("my_file.txt", mode="a") as file: #using with keyword and assigning an alias we can auto close the file automatically
+    file.write("\nAdditional Text")
+    
+with open("my_file.txt") as file: #using with keyword and assigning an alias we can auto close the file automatically
+    content = file.read()
+    print(content)
+
+with open("new_file.txt", mode="w") as file:
+    file.write("New text.")
 
 # # Describe Problem
 # def my_function():
