@@ -51,6 +51,37 @@ with open("./file1.txt") as file1:
         common_elements = [n for n in list_one if n in list_two]
         print(common_elements)
 
+"""Dictionary Comprehension
+new_dict = {new_key:new_value for item in list}
+new_dict = {new_key:new_value for (key,value) in dict.items()}
+new_dict = {new_key:new_value for (key,value) in dict.items() if test_condition}
+"""
+import random
+names = ['alex', 'beth', 'caroline', 'Dave', 'Elanor', 'Freddie']
+
+student_scores = {student:random.randint(1,100) for student in names}
+print(student_scores)
+
+passed_students = {student:student_scores[student] for student in student_scores if student_scores[student] > 60} #can also be done with tuples 
+#for (student, score) in student_scores.items() ^^^^^^
+print(passed_students)
+
+sentence = "What is the Airspeed Velocity of an Unladen Swallow?"
+word_list = sentence.split(" ")
+print(word_list)
+
+result = {word:len(word) for word in word_list}
+print(result)
+
+weather_c = {"Monday": 12, "Tuesday": 14, "Wednesday": 15, "Thursday": 14, "Friday": 21, "Saturday": 22, "Sunday": 24}
+"""To convert temp_c into temp_f use this formula: 
+
+(temp_c * 9/5) + 32 = temp_f
+
+"""
+weather_f = {key:(weather_c[key] * 9/5) + 32 for key in weather_c}
+
+print(weather_f)
 
 # with open("my_file.txt", mode="a") as file: #using with keyword and assigning an alias we can auto close the file automatically
 #     file.write("\nAdditional Text")
