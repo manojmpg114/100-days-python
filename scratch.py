@@ -1,13 +1,66 @@
 ############DEBUGGING#####################
-with open("my_file.txt", mode="a") as file: #using with keyword and assigning an alias we can auto close the file automatically
-    file.write("\nAdditional Text")
-    
-with open("my_file.txt") as file: #using with keyword and assigning an alias we can auto close the file automatically
-    content = file.read()
-    print(content)
+"""List Comprehension -- new_list = [new_item_code for item in list]"""
+numbers = [1,2,3]
+new_list = [n+1 for n in numbers]
 
-with open("new_file.txt", mode="w") as file:
-    file.write("New text.")
+print(new_list)
+
+name = "Manoj"
+new_list = [letter for letter in name]
+print(new_list)
+
+"""order of operations // python sequence
+    list
+    range
+    string
+    tuple
+"""
+
+new_list = [n*2 for n in range(1,5)]
+print(new_list)
+
+"""Conditional List Comprehension"""
+"""new_list = [new_item for item in list if test]"""
+names = ['alex', 'beth', 'caroline', 'Dave', 'Elanor', 'Freddie']
+
+short_names = [name for name in names if len(name) < 5]
+print(short_names)
+
+title_names = [name.title() for name in names]
+print(title_names)
+
+numbers = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+squared_numbers = [n*n for n in numbers]
+print(squared_numbers)
+
+list_of_strings = ['9', '0', '32', '8', '2', '8', '64', '29', '42', '99']
+numbers = [int(n) for n in list_of_strings if int(n) % 2 == 0]
+print(numbers)
+
+with open("./file1.txt") as file1:
+    with open("./file2.txt") as file2:
+        list_one = file1.readlines()
+        list_two = file2.readlines()
+        
+        list_one = [int(n.rstrip("\n")) for n in list_one]
+        list_two = [int(n.rstrip("\n")) for n in list_two]
+        
+        print(list_one)
+        print(list_two)
+        
+        common_elements = [n for n in list_one if n in list_two]
+        print(common_elements)
+
+
+# with open("my_file.txt", mode="a") as file: #using with keyword and assigning an alias we can auto close the file automatically
+#     file.write("\nAdditional Text")
+    
+# with open("my_file.txt") as file: #using with keyword and assigning an alias we can auto close the file automatically
+#     content = file.read()
+#     print(content)
+
+# with open("new_file.txt", mode="w") as file:
+#     file.write("New text.")
 
 # # Describe Problem
 # def my_function():
