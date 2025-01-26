@@ -1,11 +1,86 @@
 ############DEBUGGING#####################
-import tkinter
+# import tkinter #good if we are only using a few modules within the tkinter class
+from tkinter import * #now we don't have to make references as tkinter.Label or tkinter.Button and can just assign Label or Button to our variables
 
-window = tkinter.Tk()
+window = Tk()
 window.title("My First GUI Program")
 window.minsize(width=500, height=300)
 
-window.mainloop() #always has to be at the end of the program -- keeps the window up and running to allow for tkinter to listen
+#Label Component
+my_label = Label(text = "I am a Label", font=("Arial", 24, "bold"))
+my_label.pack()
+my_label["text"] = "New Text"
+
+#Button component
+
+def button_clicked():
+    # print("I got clicked")
+    my_label.config(text= "Button got clicked")
+
+button = Button(text="CLICK ME", command=button_clicked) #use the command keyword arg and pass a function/method name to call that method on click
+button.pack()
+
+#Entry component
+
+window.mainloop()
+
+# window = tkinter.Tk()
+# window.title("My First GUI Program")
+# window.minsize(width=500, height=300)
+
+#Label
+
+# my_label = tkinter.Label(text="I am a Label", font=("Arial", 24, "bold"))
+# my_label.pack(side="left") #the packer has to pack the component to the screen otherwise it would never show up
+
+# my_label["text"] = "New Text" #component can be changed like a dictionary because it works with **kwargs
+# my_label.config(text ="New Text") #component also has a function called .config() that accepts the keyword argument and what you want to change it too
+
+# button = tkinter.Button()
+
+# window.mainloop() #always has to be at the end of the program -- keeps the window up and running to allow for tkinter to listen
+
+# """any argument leading with an astrik is the unlimited arguments *args then reference var args or *numbers then reference var numbers"""
+# def add(*args): #any argument leading with an astrik is the unlimited arguments *args then reference var args or *numbers then reference var numbers
+#     #*args is essentially a tuple if printed
+#     print(sum(args))
+
+# add(2,3,4,5,6,9)
+
+# """**kwargs: Many keyworded Arguments"""
+# def calculate(n,**kwargs): #**kwargs or double astric means we can have unlimited keywork arguments
+#     #**kwargs are essentially a dictionary if printed
+#     print(kwargs)
+#     # for key, value in kwargs.items():
+#     #     print(key)
+#     #     print(value)
+#     n += kwargs["add"]
+#     n *= kwargs["multiply"]
+#     print(n)
+        
+    
+# calculate(2, add=3, multiply = 5)
+
+# class Car:
+#     def __init__(self, **kw):
+#         """accessing the keyword args through dictionary direct access can result in errors if the code we build around expected kwargs doesn't exist as input"""
+#         # self.make = kw["make"]
+#         # self.model = kw["model"]
+#         """using dictionary .get() method to get the dictionary key passed will return none and won't give us an error"""
+#         self.make = kw.get("make")
+#         self.model = kw.get("model")
+#         self.color = kw.get("color")
+#         self.seats = kw.get("seats")
+
+# my_car = Car(make="Nissan", model = "GT-R")
+
+# print(my_car.model)
+# print(my_car.make)
+
+# my_car_two = Car(make="Honda")
+
+# print(my_car_two.make)
+# print(my_car_two.model)
 
 # """List Comprehension -- new_list = [new_item_code for item in list]"""
 # numbers = [1,2,3]
