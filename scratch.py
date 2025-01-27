@@ -8,9 +8,11 @@ window.minsize(width=500, height=300)
 
 #Label Component
 my_label = Label(text = "I am a Label", font=("Arial", 24, "bold"))
-my_label.pack()
+# my_label.pack()
+# my_label.config(text="New Text")
 my_label["text"] = "New Text"
-
+# my_label.place(x=100, y=200) #place's downside is that its so specific with coordinates
+my_label.grid(column=0, row=0)
 #Button component
 
 def button_clicked():
@@ -19,13 +21,13 @@ def button_clicked():
     my_label.config(text= new_text)
 
 button = Button(text="CLICK ME", command=button_clicked) #use the command keyword arg and pass a function/method name to call that method on click
-button.pack()
+# button.pack()
 
 #Entry component
 
 input = Entry(width=30) #input field / text box for input on the gui
 input.insert(END,string="Some text to begin with.")
-input.pack()
+# input.pack()
 # print(input.get()) #we need to get this to work but it needs a trigger so maybe in the same button click
 
 #Multi-Line Text Box
@@ -35,7 +37,7 @@ text.focus()
 #Add some text to begin with.
 text.insert(END, "Example of multi-line text entry.")
 print(text.get("1.0", END))
-text.pack()
+# text.pack()
 
 #Spinbox
 def spinbox_used():
@@ -43,7 +45,7 @@ def spinbox_used():
     print(spinbox.get())
 
 spinbox = Spinbox(from_=0, to= 10, width=5, command=spinbox_used)
-spinbox.pack()
+# spinbox.pack()
 
 #Scale
 #called with current scale value
@@ -62,7 +64,7 @@ def checkbutton_used():
 checked_state = IntVar() #IntVar is a class within the tkinter module that can hold the variable state of some tkinter widgets / components
 checkbutton = Checkbutton(text="Is On?", variable=checked_state, command=checkbutton_used)
 checked_state.get()
-checkbutton.pack()
+# checkbutton.pack()
 
 #Radiobutton
 def radio_used():
@@ -73,8 +75,8 @@ radio_state = IntVar() #IntVar is a class within the tkinter module that can hol
 radiobutton1 = Radiobutton(text="Option1", value = 1, variable=radio_state, command=radio_used)
 radiobutton2 = Radiobutton(text="Option2", value = 2, variable=radio_state, command=radio_used)
 
-radiobutton1.pack()
-radiobutton2.pack()
+# radiobutton1.pack()
+# radiobutton2.pack()
 
 #Listbox
 def listbox_used(event):
@@ -90,7 +92,10 @@ for item in fruits:
 # print(type(listbox))
 
 listbox.bind("<<ListboxSelect>>",listbox_used)
-listbox.pack()
+# listbox.pack()
+
+#pack behavior by default packs from the previous widget pack and it places after the last one prior 
+#packing makes it complicated to manage layouts so we have alternatives to layout management
 
 window.mainloop()
 
