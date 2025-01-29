@@ -5,6 +5,7 @@ from tkinter import * #now we don't have to make references as tkinter.Label or 
 window = Tk()
 window.title("My First GUI Program")
 window.minsize(width=500, height=300)
+window.config(padx=20, pady=20) #adding padding or margins to our window
 
 #Label Component
 my_label = Label(text = "I am a Label", font=("Arial", 24, "bold"))
@@ -12,7 +13,7 @@ my_label = Label(text = "I am a Label", font=("Arial", 24, "bold"))
 # my_label.config(text="New Text")
 my_label["text"] = "New Text"
 # my_label.place(x=100, y=200) #place's downside is that its so specific with coordinates
-my_label.grid(column=0, row=0)
+my_label.grid(column=0, row=0) #If we use the layout manager with grid we can't have the pack method managing our widgets 
 #Button component
 
 def button_clicked():
@@ -22,6 +23,10 @@ def button_clicked():
 
 button = Button(text="CLICK ME", command=button_clicked) #use the command keyword arg and pass a function/method name to call that method on click
 # button.pack()
+button.grid(column=1,row=1)
+
+button2 = Button(text="CLICK ME 2", command=button_clicked)
+button2.grid(column=2, row = 0)
 
 #Entry component
 
@@ -29,6 +34,7 @@ input = Entry(width=30) #input field / text box for input on the gui
 input.insert(END,string="Some text to begin with.")
 # input.pack()
 # print(input.get()) #we need to get this to work but it needs a trigger so maybe in the same button click
+input.grid(column=3, row=2)
 
 #Multi-Line Text Box
 text = Text(height=5, width=30)
@@ -53,7 +59,7 @@ def scale_used(value):
     print(value)
 
 scale = Scale(from_=0, to = 100, command= scale_used)
-scale.pack()
+# scale.pack()
 
 #Checkbutton
 def checkbutton_used():
