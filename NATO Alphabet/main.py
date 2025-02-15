@@ -29,12 +29,36 @@ print(nato_df)
 nato_dict = {row.letter:row.code for (index,row) in nato_df.iterrows()}
 print(nato_dict)
 #TODO 2. Create a list of the phonetic code words from a word that the user inputs.
-word = input("What do you want to spell out? ").upper()
+# word = input("What do you want to spell out? ").upper()
 # nato_list = [value for (key,value) in nato_dict ]
 # nato_list = []
 # for c in word:
 #     nato_list.append(nato_dict[c])
 
-nato_list = [nato_dict[c] for c in word]
+# nato_list = [nato_dict[c] for c in word]
+# nato_list = None
+
+nato_attempt = 1
+
+def nato_strong() -> int:
+    try:
+        word = input("What do you want to spell out? ").upper()
+        nato_list = [nato_dict[c] for c in word]
+        print(nato_list)
+        return 0
+    except KeyError:
+        print("Sorry, only letters in the alphabet please.")
+        return 1
+
+while nato_attempt ==  1:
+    nato_attempt = nato_strong()
+# print(nato_strong)
+
+# try:
+#     nato_strong()
+# except KeyError:
+#     print("Sorry, only letters in the alphabet please.")
+#     nato_strong()
     
-print(nato_list)
+    
+# print(nato_list)
