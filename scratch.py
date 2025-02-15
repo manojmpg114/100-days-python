@@ -1,109 +1,148 @@
 ############DEBUGGING#####################
-# import tkinter #good if we are only using a few modules within the tkinter class
-from tkinter import * #now we don't have to make references as tkinter.Label or tkinter.Button and can just assign Label or Button to our variables
+fruits = ["Apple", "Pear", "Orange"]
 
-window = Tk()
-window.title("My First GUI Program")
-window.minsize(width=500, height=300)
-window.config(padx=20, pady=20) #adding padding or margins to our window
+# Catch the exception and make sure the code runs without crashing.
+def make_pie(index):
+    fruit = fruits[index]
+    print(fruit + " pie")
 
-#Label Component
-my_label = Label(text = "I am a Label", font=("Arial", 24, "bold"))
-# my_label.pack()
-# my_label.config(text="New Text")
-my_label["text"] = "New Text"
-# my_label.place(x=100, y=200) #place's downside is that its so specific with coordinates
-my_label.grid(column=0, row=0) #If we use the layout manager with grid we can't have the pack method managing our widgets 
-#Button component
+#make_pie(4)
 
-def button_clicked():
-    # print("I got clicked")
-    new_text = input.get() #get the text inside the input box / textbox 
-    my_label.config(text= new_text)
-
-button = Button(text="CLICK ME", command=button_clicked) #use the command keyword arg and pass a function/method name to call that method on click
-# button.pack()
-button.grid(column=1,row=1)
-
-button2 = Button(text="CLICK ME 2", command=button_clicked)
-button2.grid(column=2, row = 0)
-
-#Entry component
-
-input = Entry(width=30) #input field / text box for input on the gui
-input.insert(END,string="Some text to begin with.")
-# input.pack()
-# print(input.get()) #we need to get this to work but it needs a trigger so maybe in the same button click
-input.grid(column=3, row=2)
-
-#Multi-Line Text Box
-text = Text(height=5, width=30)
-#Put the cursor in textbox
-text.focus()
-#Add some text to begin with.
-text.insert(END, "Example of multi-line text entry.")
-print(text.get("1.0", END))
-# text.pack()
-
-#Spinbox
-def spinbox_used():
-    #gets current value in spinbox.
-    print(spinbox.get())
-
-spinbox = Spinbox(from_=0, to= 10, width=5, command=spinbox_used)
-# spinbox.pack()
-
-#Scale
-#called with current scale value
-def scale_used(value):
-    print(value)
-
-scale = Scale(from_=0, to = 100, command= scale_used)
-# scale.pack()
-
-#Checkbutton
-def checkbutton_used():
-    #Prints 1 if on button checked, otherwise prints 0.
-    print(checked_state.get())
+try:
+    make_pie(4)
+except IndexError:
+    print("Fruit pie")
     
-#variable to hold on to checked state, 0 is off, 1 is on
-checked_state = IntVar() #IntVar is a class within the tkinter module that can hold the variable state of some tkinter widgets / components
-checkbutton = Checkbutton(text="Is On?", variable=checked_state, command=checkbutton_used)
-checked_state.get()
-# checkbutton.pack()
+try:
+    facebook_posts = [
+    {'Likes': 21, 'Comments': 2},
+    {'Likes': 13, 'Comments': 2, 'Shares': 1},
+    {'Likes': 33, 'Comments': 8, 'Shares': 3},
+    {'Comments': 4, 'Shares': 2},
+    {'Comments': 1, 'Shares': 1},
+    {'Likes': 19, 'Comments': 3}
+    ]
 
-#Radiobutton
-def radio_used():
-    print(radio_state.get())
+
+    def count_likes(posts):
+
+        total_likes = 0
+        for post in posts:
+            total_likes = total_likes + post['Likes']
+        
+        return total_likes
+
+
+    count_likes(facebook_posts)
+
+except KeyError:
+    print("Key error because we are passing a list of dictionaries")
+
+# # import tkinter #good if we are only using a few modules within the tkinter class
+# from tkinter import * #now we don't have to make references as tkinter.Label or tkinter.Button and can just assign Label or Button to our variables
+
+# window = Tk()
+# window.title("My First GUI Program")
+# window.minsize(width=500, height=300)
+# window.config(padx=20, pady=20) #adding padding or margins to our window
+
+# #Label Component
+# my_label = Label(text = "I am a Label", font=("Arial", 24, "bold"))
+# # my_label.pack()
+# # my_label.config(text="New Text")
+# my_label["text"] = "New Text"
+# # my_label.place(x=100, y=200) #place's downside is that its so specific with coordinates
+# my_label.grid(column=0, row=0) #If we use the layout manager with grid we can't have the pack method managing our widgets 
+# #Button component
+
+# def button_clicked():
+#     # print("I got clicked")
+#     new_text = input.get() #get the text inside the input box / textbox 
+#     my_label.config(text= new_text)
+
+# button = Button(text="CLICK ME", command=button_clicked) #use the command keyword arg and pass a function/method name to call that method on click
+# # button.pack()
+# button.grid(column=1,row=1)
+
+# button2 = Button(text="CLICK ME 2", command=button_clicked)
+# button2.grid(column=2, row = 0)
+
+# #Entry component
+
+# input = Entry(width=30) #input field / text box for input on the gui
+# input.insert(END,string="Some text to begin with.")
+# # input.pack()
+# # print(input.get()) #we need to get this to work but it needs a trigger so maybe in the same button click
+# input.grid(column=3, row=2)
+
+# #Multi-Line Text Box
+# text = Text(height=5, width=30)
+# #Put the cursor in textbox
+# text.focus()
+# #Add some text to begin with.
+# text.insert(END, "Example of multi-line text entry.")
+# print(text.get("1.0", END))
+# # text.pack()
+
+# #Spinbox
+# def spinbox_used():
+#     #gets current value in spinbox.
+#     print(spinbox.get())
+
+# spinbox = Spinbox(from_=0, to= 10, width=5, command=spinbox_used)
+# # spinbox.pack()
+
+# #Scale
+# #called with current scale value
+# def scale_used(value):
+#     print(value)
+
+# scale = Scale(from_=0, to = 100, command= scale_used)
+# # scale.pack()
+
+# #Checkbutton
+# def checkbutton_used():
+#     #Prints 1 if on button checked, otherwise prints 0.
+#     print(checked_state.get())
     
-#Variable to hold on to which radio button value is checked 
-radio_state = IntVar() #IntVar is a class within the tkinter module that can hold the variable state of some tkinter widgets / components
-radiobutton1 = Radiobutton(text="Option1", value = 1, variable=radio_state, command=radio_used)
-radiobutton2 = Radiobutton(text="Option2", value = 2, variable=radio_state, command=radio_used)
+# #variable to hold on to checked state, 0 is off, 1 is on
+# checked_state = IntVar() #IntVar is a class within the tkinter module that can hold the variable state of some tkinter widgets / components
+# checkbutton = Checkbutton(text="Is On?", variable=checked_state, command=checkbutton_used)
+# checked_state.get()
+# # checkbutton.pack()
 
-# radiobutton1.pack()
-# radiobutton2.pack()
+# #Radiobutton
+# def radio_used():
+#     print(radio_state.get())
+    
+# #Variable to hold on to which radio button value is checked 
+# radio_state = IntVar() #IntVar is a class within the tkinter module that can hold the variable state of some tkinter widgets / components
+# radiobutton1 = Radiobutton(text="Option1", value = 1, variable=radio_state, command=radio_used)
+# radiobutton2 = Radiobutton(text="Option2", value = 2, variable=radio_state, command=radio_used)
 
-#Listbox
-def listbox_used(event):
-    #Gets current selection from listbox
-    print(listbox.get(listbox.curselection()))
+# # radiobutton1.pack()
+# # radiobutton2.pack()
 
-listbox = Listbox(height=4)
-fruits = ["Apple", "Pear", "Orange", "Banana"]
+# #Listbox
+# def listbox_used(event):
+#     #Gets current selection from listbox
+#     print(listbox.get(listbox.curselection()))
 
-for item in fruits:
-    listbox.insert(fruits.index(item), item)
+# listbox = Listbox(height=4)
+# fruits = ["Apple", "Pear", "Orange", "Banana"]
 
-# print(type(listbox))
+# for item in fruits:
+#     listbox.insert(fruits.index(item), item)
 
-listbox.bind("<<ListboxSelect>>",listbox_used)
-# listbox.pack()
+# # print(type(listbox))
 
-#pack behavior by default packs from the previous widget pack and it places after the last one prior 
-#packing makes it complicated to manage layouts so we have alternatives to layout management
+# listbox.bind("<<ListboxSelect>>",listbox_used)
+# # listbox.pack()
 
-window.mainloop()
+# #pack behavior by default packs from the previous widget pack and it places after the last one prior 
+# #packing makes it complicated to manage layouts so we have alternatives to layout management
+
+# window.mainloop()
 
 # window = tkinter.Tk()
 # window.title("My First GUI Program")
