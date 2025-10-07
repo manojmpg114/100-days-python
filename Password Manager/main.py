@@ -92,6 +92,11 @@ def save():
         finally:
             website_entry.delete(0, END)
             password_entry.delete(0, END)
+            
+# ---------------------------- Find Password ------------------------------- #
+
+
+
 # ---------------------------- UI SETUP ------------------------------- #
 
 window = Tk() #200x200 with 20 padding
@@ -123,9 +128,12 @@ gen_password_button.grid(column=2, row=3)
 add_button = Button(text="Add", width=36, command = save) #column 1 but columnspan = 2 ; width 36
 add_button.grid(column=1, row=4, columnspan= 2, sticky="ew")
 
-website_entry = Entry(width=35) #column 1 but columnspan = 2 ; width 35
+website_entry = Entry(width=21) #column 1 but columnspan = 2 ; width 35
 website_entry.focus()
-website_entry.grid(column=1, row=1, columnspan= 2, sticky="ew")
+website_entry.grid(column=1, row=1, sticky="ew")
+
+search_button = Button(text="Search", width=15, command= find_password) #column 2
+search_button.grid(column=2,row=1)
 
 username_entry = Entry(width=35) #column 1 but columnspan = 2 ; width 35
 username_entry.insert(0, 'generic@gmail.com')
@@ -133,5 +141,7 @@ username_entry.grid(column=1, row=2, columnspan= 2, sticky="ew")
 
 password_entry = Entry(width=21) #column 1 ; width 21
 password_entry.grid(column=1, row=3, sticky="ew")
+
+
 
 window.mainloop() 

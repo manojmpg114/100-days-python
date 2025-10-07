@@ -14,5 +14,9 @@
     "BBEDAFASF": {
         "email": "generic@gmail.com",
         "password": "AFAF"
+    },
+    "facebook": {
+        "email": "generic@gmail.com",
+        "password": "stored"
     }
 }
