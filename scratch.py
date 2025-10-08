@@ -1,42 +1,55 @@
 ############DEBUGGING#####################
-fruits = ["Apple", "Pear", "Orange"]
 
-# Catch the exception and make sure the code runs without crashing.
-def make_pie(index):
-    fruit = fruits[index]
-    print(fruit + " pie")
-
-#make_pie(4)
-
-try:
-    make_pie(4)
-except IndexError:
-    print("Fruit pie")
-    
-try:
-    facebook_posts = [
-    {'Likes': 21, 'Comments': 2},
-    {'Likes': 13, 'Comments': 2, 'Shares': 1},
-    {'Likes': 33, 'Comments': 8, 'Shares': 3},
-    {'Comments': 4, 'Shares': 2},
-    {'Comments': 1, 'Shares': 1},
-    {'Likes': 19, 'Comments': 3}
-    ]
-
-
-    def count_likes(posts):
-
-        total_likes = 0
-        for post in posts:
-            total_likes = total_likes + post['Likes']
+def ml_1k():
+    with open("ml_50k.txt", "r", encoding="utf-8") as ml_read:
+        # print(ml_read.readline().split(' ')[0])
+        # word = ml_read.readline().split(' ')[0]
         
-        return total_likes
+        with open("ml_1k", "w", encoding="utf-8") as ml_write:
+            with open("ml_50k.txt", "r", encoding="utf-8") as ml_read:
+                for i in range(1000):
+                    ml_write.write(f"{ml_read.readline().split(' ')[0]}\n")
+if __name__ == "__main__":
+    ml_1k()
+
+# fruits = ["Apple", "Pear", "Orange"]
+
+# # Catch the exception and make sure the code runs without crashing.
+# def make_pie(index):
+#     fruit = fruits[index]
+#     print(fruit + " pie")
+
+# #make_pie(4)
+
+# try:
+#     make_pie(4)
+# except IndexError:
+#     print("Fruit pie")
+    
+# try:
+#     facebook_posts = [
+#     {'Likes': 21, 'Comments': 2},
+#     {'Likes': 13, 'Comments': 2, 'Shares': 1},
+#     {'Likes': 33, 'Comments': 8, 'Shares': 3},
+#     {'Comments': 4, 'Shares': 2},
+#     {'Comments': 1, 'Shares': 1},
+#     {'Likes': 19, 'Comments': 3}
+#     ]
 
 
-    count_likes(facebook_posts)
+#     def count_likes(posts):
 
-except KeyError:
-    print("Key error because we are passing a list of dictionaries")
+#         total_likes = 0
+#         for post in posts:
+#             total_likes = total_likes + post['Likes']
+        
+#         return total_likes
+
+
+#     count_likes(facebook_posts)
+
+# except KeyError:
+#     print("Key error because we are passing a list of dictionaries")
 
 # # import tkinter #good if we are only using a few modules within the tkinter class
 # from tkinter import * #now we don't have to make references as tkinter.Label or tkinter.Button and can just assign Label or Button to our variables
