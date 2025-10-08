@@ -1,16 +1,27 @@
 ############DEBUGGING#####################
 
-def ml_1k():
-    with open("ml_50k.txt", "r", encoding="utf-8") as ml_read:
-        # print(ml_read.readline().split(' ')[0])
-        # word = ml_read.readline().split(' ')[0]
+"""
+Gmail: smtp.gmail.com
+
+Hotmail: smtp.live.com
+
+Outlook: outlook.office365.com
+
+Yahoo: smtp.mail.yahoo.com
+
+"""
+
+# def ml_1k():
+#     with open("ml_50k.txt", "r", encoding="utf-8") as ml_read:
+#         # print(ml_read.readline().split(' ')[0])
+#         # word = ml_read.readline().split(' ')[0]
         
-        with open("ml_1k", "w", encoding="utf-8") as ml_write:
-            with open("ml_50k.txt", "r", encoding="utf-8") as ml_read:
-                for i in range(1000):
-                    ml_write.write(f"{ml_read.readline().split(' ')[0]}\n")
-if __name__ == "__main__":
-    ml_1k()
+#         with open("ml_1k", "w", encoding="utf-8") as ml_write:
+#             with open("ml_50k.txt", "r", encoding="utf-8") as ml_read:
+#                 for i in range(1000):
+#                     ml_write.write(f"{ml_read.readline().split(' ')[0]}\n")
+# if __name__ == "__main__":
+#     ml_1k()
 
 # fruits = ["Apple", "Pear", "Orange"]
 
